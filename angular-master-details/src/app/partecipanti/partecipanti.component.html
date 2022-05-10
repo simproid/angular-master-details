@@ -1,0 +1,30 @@
+<ng-container *ngIf="!showAddPartecipanteComponent">
+<h2> Lista Partecipanti </h2> <button class="mb-20" [routerLink]="'/master/'">Indietro</button> <button class="mb-20"
+    (click)="showAddPartecipante()">Aggiungi partecipante</button> 
+
+<ul *ngIf="event">
+    <li *ngFor="let partecipante of event.partecipanti">
+        <form #form="ngForm" (submit)="savePartecipante()">
+            <div *ngIf="showEditPanelPartecipante">
+                <input type="text" name="name" [(ngModel)]="partecipante.name" />
+                <button type="submit">Aggiorna</button>
+                <button (click)="showEditPanelPartecipante = false">Annulla</button>
+            </div>
+            <div *ngIf="!showEditPanelPartecipante">
+                {{partecipante.id}} - {{partecipante.name}}
+                <button (click)="showEditPanelPartecipante = true">Modifica</button>
+                <button (click)="deletePartecipante(partecipante.id)">Cancella</button>
+
+            </div>
+        </form>
+    </li>
+</ul>
+<div *ngIf="event && !event.partecipanti.length">Non ci sono partecipanti</div>
+</ng-container>
+
+<form #formPartecipante="ngForm" *ngIf="showAddPartecipanteComponent" (submit)="addPartecipante()">
+    <h2> Aggiungi partecipante</h2> <button class="mb-20" (click)="showAddPartecipanteComponent = false">Indietro</button>
+    <br>
+    <input type="text" required name="name" [(ngModel)]="partecipante.name" />
+    <button type="submit">Aggiungi</button>
+</form>

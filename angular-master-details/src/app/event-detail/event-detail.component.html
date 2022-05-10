@@ -1,0 +1,30 @@
+<ng-container >
+
+    <h2> Dettagli Evento </h2><button class="mb-20" (click)="this.back.emit(1)">Indietro</button> 
+
+    <form #form="ngForm" *ngIf="event" (submit)="save()">
+        <div *ngIf="editEvent">
+            <table>
+                <td>{{event.name}} </td>
+                <td>{{event.description}}</td>
+                <td><button *ngIf="editEvent" (click)="editEvent = false">Modifica</button></td>
+                <td> <a [routerLink]="'/partecipanti/' + event.id">Visualizza partecipanti</a></td>
+            </table>      
+        </div>
+        <div *ngIf="!editEvent">
+            <input type="text" required minlength="4" name="name" [(ngModel)]="event.name" />
+            <input type="text" required name="description" [(ngModel)]="event.description" />
+            <button type="submit">Aggiorna</button>
+            <button (click)="editEvent = true">Annulla</button>
+            <app-validation-message [control]="form.controls['name']"></app-validation-message>
+        </div>
+
+    </form>
+
+
+   
+
+   
+   
+
+</ng-container>

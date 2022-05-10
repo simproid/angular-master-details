@@ -1,0 +1,15 @@
+<ng-container>
+    <h4>Aggiungi evento</h4>
+    <form #formAddEvent="ngForm" *ngIf="event" (submit)="addEvent()">
+        <input type="text" required name="data" placeholder="Data" [(ngModel)]="event.data" />
+        <select name="type" [(ngModel)]="event.type">
+            <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType | eventType}}</option>
+        </select>
+        
+        <input type="text" required name="name" placeholder="Nome" [(ngModel)]="event.name" />
+        <input type="text" required name="description" placeholder="Descrizione" [(ngModel)]="event.description" />
+        
+        <button type="submit">Aggiungi</button>
+    </form>
+    <button class="mt-20" (click)="this.back.emit(1)">Indietro</button>
+</ng-container>

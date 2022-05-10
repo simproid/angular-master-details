@@ -1,0 +1,3 @@
+<app-event-list (addEvent)="showAddEvent()" (showDetail)="showEventDetail($event)" *ngIf="showEventListComponent"></app-event-list>
+<app-add-event (back)="showEventList()" *ngIf="showAddEventComponent"></app-add-event>
+<app-event-detail (back)="hideDetail()"  #eventDetail *ngIf="showEventDetailComponent"></app-event-detail>

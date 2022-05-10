@@ -1,0 +1,28 @@
+<ng-container>
+
+    <h2> Lista Eventi </h2>
+
+        <table>
+            <th>
+                Id
+            </th>
+            <th>Data <span class="filter"><button (click)="sortDataUp()" *ngIf="showFilterUp">Up</button><button (click)="sortDataDown()" *ngIf="!showFilterUp">Down</button></span></th>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Tipologia</th>
+            <th colspan="2">Azioni</th>
+            <tr *ngFor="let event of events">
+                <td>{{event.id}} </td>
+                <td>{{event.data| date:'d MMMM yyyy'}} </td>
+                <td>{{event.name}}</td>
+                <td>{{event.description}}</td>
+                <td>{{event.type | eventType}}</td>
+                <!-- <td><a [routerLink]="'/eventDetail/' + event.id">Dettaglio</a></td> -->
+                <td><button (click)="seeDetail(event.id)">Dettaglio</button></td>
+                <td><button (click)="deleteEvent(event)">Cancella</button></td>
+            </tr>
+        </table>
+
+        <button class="mt-20" (click)="showAdd()">Aggiungi evento</button>
+
+</ng-container>

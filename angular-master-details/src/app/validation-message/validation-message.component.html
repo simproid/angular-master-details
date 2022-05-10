@@ -1,0 +1,17 @@
+<ng-container [ngSwitch]="true" *ngIf="control.invalid && (control.dirty || control.touched)">
+    <ng-container  *ngSwitchCase="!!control.errors?.['required']">
+        Campo obbligatorio
+    </ng-container>
+   <ng-container *ngSwitchCase="!!control.errors?.['minlength']">
+        Minimo {{control.errors?.['minlength'].requiredLength}} caratteri
+    </ng-container>
+   <!--  <ng-container *ngSwitchCase="!!control.errors.maxlength">
+        Minimo {{control.errors.maxlength.requiredLength}} caratteri
+    </ng-container>
+    <ng-container *ngSwitchCase="!!control.errors.email">
+        Email non valida
+    </ng-container>
+    <ng-container *ngSwitchCase="!!control.errors.custom">
+        {{control.errors.custom}}
+    </ng-container>-->
+</ng-container>
